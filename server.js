@@ -16,6 +16,7 @@ const path = require('path');
 const cors = require('cors');
 const fs = require('fs');
 const { Expo } = require('expo-server-sdk');
+const messagesRouter = require('./routes/messages');
 
 // Routes
 const numbers = require('./routes/numbers');
@@ -55,6 +56,7 @@ mongoose.connection.on('disconnected', () => console.warn('⚠️ MongoDB discon
 mongoose.connection.on('reconnected', () => console.log('🔗 MongoDB reconnected'));
 
 // Routes
+app.use('/api/messages', messagesRouter);
 app.use('/api/numbers', numbers);
 app.use('/api/household-items', householdItemsRouter);
 app.use('/api/body-parts', bodyPartsRouter);
