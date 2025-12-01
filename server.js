@@ -1,4 +1,12 @@
-require('dotenv').config(); // Load environment variables from .env
+if (process.env.NODE_ENV !== 'production') {
+    try {
+        require('dotenv').config();
+        console.log('✅ Loaded .env file');
+    } catch (err) {
+        console.warn('⚠️ Could not load .env file:', err.message);
+    }
+}
+
 const express = require('express');
 const http = require('http');
 const socketIO = require('socket.io');
@@ -19,6 +27,7 @@ const animalsRouter = require('./routes/animals');
 // Models
 const Message = require('./models/Message');
 const UserStatus = require('./models/UserStatus');
+
 
 const app = express();
 const server = http.createServer(app);
