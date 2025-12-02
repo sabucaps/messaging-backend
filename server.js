@@ -1,12 +1,5 @@
-if (process.env.NODE_ENV !== 'production') {
-    try {
-        require('dotenv').config();
-        console.log('✅ Loaded .env file');
-    } catch (err) {
-        console.warn('⚠️ Could not load .env file:', err.message);
-    }
-}
-
+require('dotenv').config();
+console.log('✅ .env loaded');
 const express = require('express');
 const http = require('http');
 const socketIO = require('socket.io');
